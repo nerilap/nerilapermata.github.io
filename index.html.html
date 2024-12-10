@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Nerila Permata Aly</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            min-height: 100vh;
+            background-color: #f5eadd;
+        }
+
+        /* Container */
+        .container {
+            display: flex;
+            width: 100%;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            background-color: #e4a78a;
+            color: white;
+            width: 230px;
+            padding: 20px;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: fixed;
+        }
+
+        .sidebar h2 {
+            font-size: 1.5em;
+            text-align: center;
+            margin-bottom: 20px;
+            margin-top: 50px;
+            color: white;
+        }
+
+        .sidebar nav ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .sidebar nav ul li {
+            margin-bottom: 20px;
+        }
+
+        .sidebar nav ul li a {
+            text-decoration: none;
+            color: white;
+            font-size: 18px;
+            text-align: center;
+            display: block;
+            padding: 10px;
+            border-radius: 10px;
+            transition: background 0.3s;
+        }
+
+        .sidebar nav ul li a:hover,
+        .sidebar nav ul li a.active {
+            background-color: #ffffff;
+            color: #FF8C00;
+        }
+
+        .sidebar .social-icons {
+            margin-top: 5px;
+            display: flex;
+            text-align: center;
+            gap: 20px;
+        }
+
+        .sidebar .social-icons a {
+            color: white;
+            font-size: 24px;
+            text-decoration: none;
+        }
+
+        .sidebar .social-icons a:hover {
+            color: #333;
+        }
+
+        /* Main Content */
+        .home {
+            margin-left: 250px; /* width of sidebar + margin */
+            padding: 60px;
+            flex: 1;
+            padding-right: 50px;
+            text-align: left;
+        }
+
+        .intro p:first-child {
+            color: #f8a441;
+            font-size: 1.2em;
+        }
+
+        .intro h1 {
+            font-size: 3em;
+            color: #111010;
+        }
+
+        .intro h2 {
+            font-size: 25px;
+            color: #FF8C00;
+        }
+
+        .intro p:nth-child(3) {
+            font-size: 25px;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .intro button {
+            background-color: #0077B5;
+            border: none;
+            padding: 10px 20px;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-top: 30px;
+            transition: background 0.3s;
+        }
+
+        .intro button img {
+            margin-right: 10px; /* Space between the image and text */
+            width: 20px; /* Set the width of the image */
+            height: 20px;
+        }
+
+        .intro button:hover {
+            background-color: #4e5163;
+        }
+
+        .card {
+            background-color: white;
+            border-radius: 5px;
+            padding: 30px;
+            height: 450px;
+            width: 300px;
+            margin-right: 20px;
+            text-align: center;
+            box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+            margin-left: 20px;
+        }
+
+        .profile-pic {
+            max-width: 200px;
+            border-radius: 50%;
+            margin-top: 10px;
+        }
+
+        /* About Me Section */
+        .about-me {
+            display: flex;
+            align-items: center;
+            margin-top: 40px;
+        }
+
+        .about-me img {
+            width: 200px;
+            height: auto;
+            border-radius: 10px;
+            margin-right: 50px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .about-me-details {
+            flex: 1;
+        }
+
+        .about-me-details h2 {
+            color: #f8a441;
+            font-size: 2.5em;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .about-me-details h3 {
+            font-size: 1.5em;
+            margin-bottom: 15px;
+        }
+
+        .about-me-details p {
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .about-me-details span {
+            font-weight: bold;
+            color: #f8a441;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .buttons button {
+            background-color: black;
+            border: none;
+            padding: 10px 20px;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+
+        .buttons button:hover {
+            background-color: #e07b26;
+        }
+
+        /* Education Section */
+        .education {
+            margin-top: 60px;
+        }
+
+        .education h2 {
+            color: black;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+
+        .education-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .education-item {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .education-item h3 {
+            font-size: 1.2em;
+            margin-bottom: 10px;
+        }
+
+        .education-item p {
+            font-size: 0.9em;
+            color: #555;
+        }
+
+        .education-item .icon {
+            background-color: #f8a441;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        /* Experience Section */
+        .experience {
+            margin-top: 60px;
+        }
+
+        .experience h2 {
+            color: #f8a441;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .timeline {
+            display: flex;
+            justify-content: space-between;
+            margin: 0;
+            padding: 0;
+        }
+
+        .timeline-column {
+            width: 45%;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            position: relative;
+        }
+
+        .timeline-column.right {
+            align-items: flex-end;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 40px;
+            width: 100%;
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            width: 18px;
+            height: 18px;
+            background-color: #f8a441;
+            border-radius: 50%;
+            top: 0;
+            left: -9px;
+            transform: translateY(-50%);
+        }
+
+        .timeline-column.right .timeline-dot {
+            right: -9px;
+            left: auto;
+        }
+
+        .timeline-content {
+            background-color: white;
+            padding: 15px 20px;
+            border-radius: 8px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .timeline-content:hover {
+            transform: translateY(-5px);
+        }
+
+        .timeline-content .year {
+            background-color: #f8a441;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.9em;
+            margin-bottom: 10px;
+            display: inline-block;
+        }
+
+        .timeline-content h3 {
+            font-size: 1.2em;
+            margin: 0;
+            color: #333;
+        }
+
+        .timeline-content p {
+            font-size: 0.9em;
+            color: #555;
+        }
+
+
+        /* Portfolio Section */
+        .portfolio-section {
+            padding: 50px 20px;
+        }
+
+        .portfolio-section h2 {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 30px;
+            color: #333; /* Adjust according to your site's typography */
+        }
+
+        /* Portfolio Grid */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Portfolio Item */
+        .portfolio-item {
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+
+        .portfolio-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .portfolio-item img {
+            width: 80%;
+            height: auto;
+            display: block; 
+            margin: auto;
+            padding: 15px;
+        }
+
+        .portfolio-content {
+            padding: 15px;
+        }
+
+        .portfolio-tag {
+            display: inline-block;
+            font-size: 0.8rem;
+            color: white;
+            background-color: #f15b5b;
+            padding: 5px 10px;
+            border-radius: 20px;
+            margin-bottom: 10px;
+        }
+
+        .portfolio-content h3 {
+            font-size: 1.2rem;
+            margin: 10px 20px;
+            color: #333;
+        }
+
+        .portfolio-content p {
+            font-size: 0.9rem;
+            margin: 10px 20px;
+            color: #777;
+            margin-bottom: 15px;
+        }
+
+        .portfolio-link {
+            text-decoration: none;
+            color: #f15b5b;
+            font-weight: bold;
+            margin: 10px 20px;
+            transition: color 0.2s;
+        }
+
+        .portfolio-link:hover {
+            color: #d14d4d;
+        }
+
+        .portofolio-item button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: black;
+            color: blue;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            right: 0;
+        }
+
+        .portofolio button:hover {
+            background-color: #4e5163;
+        }
+
+        /*contact*/
+        .contact-section {
+            padding: 50px;
+            background-color: #f8f9fa;
+        }
+
+        .contact-section h2 {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 30px;
+            color: #FF8C00; /* Adjust according to your site's typography */
+        }
+
+        .contact-cards {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .contact-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 10px 20px;
+            margin: 0 10px;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            width: 30%;
+        }
+
+        .contact-card i {
+            font-size: 30px;
+            color: #ff8303;
+        }
+
+        .contact-form {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+
+        .contact-form label {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .contact-form input, 
+        .contact-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .contact-form button {
+            background-color: #ff8303;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .map {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <h2>NERILA PERMATA ALY</h2>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About Me</a></li>
+                    <li><a href="#education">Education</a></li>
+                    <li><a href="#experience">Experience</a></li>
+                    <li><a href="#portfolio">Portfolio</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="social-icons">
+                <a href="#"><img src="https://img.icons8.com/ios-glyphs/30/ffffff/facebook-new.png"/></a>
+                <a href="#"><img src="https://img.icons8.com/ios-glyphs/30/ffffff/whatsapp.png"/></a>
+                <a href="#"><img src="https://img.icons8.com/ios-glyphs/30/ffffff/instagram-new.png"/></a>
+                <a href="#"><img src="https://img.icons8.com/ios-glyphs/30/ffffff/youtube-play.png"/></a>
+            </div>
+        </aside>
+        <main class="home" id="home">
+            <section class="intro" style="display: flex; align-items: center; justify-content: space-between;">
+                <div class="intro-text">
+                    <p>Hi There...</p>
+                    <h1>I'M <span style="color: #FF8C00;">NERILA</span></h1>
+                    <h2>Permata Aly</h2>
+                    <p>Saya merupakan mahasiswa aktif dari Program Studi Sistem Informasi, Jurusan Teknik Informatika, Fakultas Teknik dan Kejuruan, Universitas Pendidikan Ganesha, Bali, Indonesia. Dengan latar belakang ini, saya memahami pentingnya sistem informasi dalam mendukung pengambilan keputusan yang efektif dan efisien di berbagai organisasi.</p>
+                    <p2>Saya tertarik dengan IT karena inovasinya yang luas dan dampaknya pada kehidupan modern. Saya menikmati memecahkan masalah dengan teknologi dan terus belajar dalam analisis sistem, pengelolaan data, dan pengembangan aplikasi. Saya selalu antusias mengikuti tren teknologi terbaru dan ingin terus berkembang di bidang ini.</p2>
+                    <a href="https://www.linkedin.com/in/nerila-permata-aly" target="_blank" style="text-decoration: none;">
+                        <button> 
+                            <img src="LinkedIn.png" alt="Icon" style="width: 20px; height: 20px; margin-right: 10px;">
+                            <b>LinkedIn</b>
+                        </button>
+                    </a>
+                </div>
+                <!-- Menambahkan Gambar di Sebelah Kanan -->
+                <div class="card">
+                    <img src="Nerilacantik.JPG" alt="Profile Picture" style="max-width: 300px; border-radius: 50px;">
+                </div>
+            </section>
+            <section class="about-me" id="about">
+                <img src="Nerilacantik2.JPG" alt="Nerila">
+                <div class="about-me-details">
+                    <h2>ABOUT <span style="color: #111010;">ME</span></h2>
+                    <h3>Nerila Permata Aly</h3>
+                    <p>Saya Merupakan Seorang Mahasiswa Aktif Dari Program Studi Sistem Informasi, Jurusan Teknik Informatika, Fakultas Teknik Dan Kejuruan, Universitas Pendidikan Ganesha. </p>
+                    <p><span>Agama</span>: Islam<br>
+                    <span>Jenis Kelamin</span>: Perempuan<br>
+                    <span>Umur</span>: 19 Tahun<br>
+                    <span>Bahasa</span>: Indonesia<br>
+                    <span>Phone</span>: +6285231044126<br>
+                    <span>Email</span>: NerilaPermata08@Gmail.Com<br>
+                    <span>Alamat</span>: Banyuwangi, Jawa Timur</p>
+                    <div class="buttons">
+                        <a href="https://drive.google.com/file/d/1FhaforCD0cR2v0u-LI3vNHfnynaLf0Xb/view?usp=sharing" target="_blank">
+                            <button><b>Download CV</b></button>
+                        </a>
+                    </div>
+                </div>
+            </section>
+            <section class="education" id="education">
+                <h2>RIWAYAT <span style="color: #FF8C00;">PENDIDIKAN</span></h2>
+                <div class="education-grid">
+                    <div class="education-item">
+                        <div class="icon">🎓</div>
+                        <h3>MI AL-HUDA</h3>
+                        <p>2011 - 2016</p>
+                        <p>MI AL-HUDA Sembulung Merupakan MI Yang Terletak Di Desa Sembulung, Kecamatan Cluring, Banyuwangi, Jawa Timur</p>
+                    </div>
+                    <div class="education-item">
+                        <div class="icon">🎓</div>
+                        <h3>SMP Negeri 2 Gambiran</h3>
+                        <p>2016 - 2019</p>
+                        <p>SMP Negeri 1 Gambiran Merupakan SMP Yang Terletak Di Desa Yosomulyo, Kecamatan Gambiran, Banyuwangi, Jawa Timur</p>
+                    </div>
+                    <div class="education-item">
+                        <div class="icon">🎓</div>
+                        <h3>SMA Negeri 1 Purwoharjo</h3>
+                        <p>2019 - 2023</p>
+                        <p>SMA Negeri 1 Purwoharjo Merupakan SMA Yang Terletak Di Desa Curah Pecak, Kecamatan Purwoharjo, Banyuwangi, Jawa Timur</p>
+                    </div>
+                    <div class="education-item">
+                        <div class="icon">🎓</div>
+                        <h3>Universitas Pendidikan Ganesha</h3>
+                        <p>2023 - Sekarang</p>
+                        <p>Universitas Pendidikan Ganesha (Undiksha) Merupakan Salah Satu Perguruan Tinggi Negeri Yang Terletak Di Kota Singaraja, Bali</p>
+                    </div>
+                </div>
+            </section>
+            <section class="experience" id="experience">
+                <h2>PENGALAMAN</h2>
+                <div class="timeline">
+                    <div class="timeline-column left">
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-content">
+                                <span class="year">2021</span>
+                                <h3>Koordinator Bidang I</h3>
+                                <p>OSIS Ganareswara, SMA Negeri 1 Purwoharjo</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-content">
+                                <span class="year">2021</span>
+                                <h3>Ketua Panitia</h3>
+                                <p>Kegiatan Maulid Nabi Yang Diselenggarakan Oleh SMA Negeri 1 Purwoharjo</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="timeline-column right">
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-content">
+                                <span class="year">2023</span>
+                                <h3>Anggota Sie Expo</h3>
+                                <p>Integer #5, Himpunan Mahasiswa Jurusan Teknik Informatika, Universitas Pendidikan Ganesha</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section id="portfolio" class="portfolio-section">
+                <h2>MY SKILL <span style="color: #FF8C00;">& PORTOFOLIO</span></h2>
+                <div class="portfolio-grid">
+                    <div class="portfolio-item">
+                        <img id="image" src="UX-Uget2.png" alt="Image 1">
+                        <button class="button next" onclick="nextImage()">&#62;</button>
+                        <div class="portfolio-content">
+                            <span class="portfolio-tag">Design</span>
+                            <h3>UI Design</h3>
+                            <p>Design UI untuk prototype aplikasi yang kami rancang yaitu U-Get</p>
+                            <a href="#" class="portfolio-link">View Project</a>
+                        </div>
+                        <script>
+                            let images = [
+                                {
+                                    src: "UXgaji.png",
+                                    caption: "Caption for Image 1"
+                                },
+                                {
+                                    src: "UXpresensi.png",
+                                    caption: "Caption for Image 2"
+                                },
+                                {
+                                    src: "UX-Uget2.png",
+                                    caption: "Caption for Image 3"
+                                }
+                            ];
+                        
+                            let currentIndex = 0;
+                        
+                            function showImage(index) {
+                                const imageElement = document.getElementById('image');
+                                const captionElement = document.getElementById('caption');
+                                imageElement.src = images[index].src;
+                                captionElement.textContent = images[index].caption;
+                            }
+                        
+                            function nextImage() {
+                                currentIndex = (currentIndex === images.length - 1) ? 0 : currentIndex + 1;
+                                showImage(currentIndex);
+                            }
+                        </script>
+                    </div>
+                    <div class="portfolio-item">
+                        <img src="Animation fish.png" alt="Project 2">
+                        <div class="portfolio-content">
+                            <span class="portfolio-tag">Animasi</span>
+                            <h3>Animasi Fish</h3>
+                            <p>Membuat Animasi 3D Menggunakan Alice 3</p>
+                            <a href="#" class="portfolio-link">View Project</a>
+                        </div>
+                    </div>
+                    <div class="portfolio-item">
+                        <img src="Alien.png" alt="Project 3">
+                        <div class="portfolio-content">
+                            <span class="portfolio-tag">Game</span>
+                            <h3>Game Alien Shooter</h3>
+                            <p>Membuat Game Alien Shooter Menggunakan Greenfoot</p>
+                            <a href="#" class="portfolio-link">View Project</a>
+                        </div>
+                    </div>
+                    <div class="portfolio-item">
+                        <img src="Skilvul.png" alt="Project 4">
+                        <div class="portfolio-content">
+                            <span class="portfolio-tag">Skilvul</span>
+                            <h3>HTML Dasar, CSS Dasar, JavaScript Dasar</h3>
+                            <p>Mengikuti Kelas HTML Dasar, CSS Dasar, JavaScript Dasar di Skilvul</p>
+                            <a href="#" class="portfolio-link">View Project</a>
+                        </div>
+                    </div>
+                    <div class="portfolio-item">
+                        <img src="mr.boball.jpg" alt="Project 3">
+                        <div class="portfolio-content">
+                            <span class="portfolio-tag">Course</span>
+                            <h3>Mr. BOB English Class Pare</h3>
+                            <p>Mengikuti Kursus Bahasa Inggris MR. BOB di Kampung Inggris Pare, Kediri</p>
+                            <a href="#" class="portfolio-link">View Project</a>
+                        </div>
+                    </div>
+                    <div class="portfolio-item">
+                        <img src="integer.jpg" alt="Project 3">
+                        <div class="portfolio-content">
+                            <span class="portfolio-tag">Organisasi</span>
+                            <h3>Anggota Sie Expo Integer #5</h3>
+                            <p>Mengikuti Kepanitiaan dan Kegiatan Integer #5</p>
+                            <a href="#" class="portfolio-link">View Project</a>
+                        </div>
+                    </div>
+                    <div class="portfolio-item">
+                        <img src="osis.JPG" alt="Project 4">
+                        <div class="portfolio-content">
+                            <span class="portfolio-tag">Organisasi</span>
+                            <h3>OSIS Ganareswara</h3>
+                            <p>Menjadi Anggota Fungsionaris Osis Ganareswara, SMA Negeri 1 Purwoharjo</p>
+                            <a href="#" class="portfolio-link">View Project</a>
+                        </div>
+                    </div>
+                    <div class="portfolio-item">
+                        <img src="isi.png" alt="Project 4">
+                        <div class="portfolio-content">
+                            <span class="portfolio-tag">Dance</span>
+                            <h3>Dance di Institute Seni Indonesia</h3>
+                            <p>Perwakilan Dance SMA di Institute Seni Indonesia, Yogyakarta</p>
+                            <a href="#" class="portfolio-link">View Project</a>
+                        </div>
+                    </div>
+                    <div class="portfolio-item">
+                        <img src="bpvp.png" alt="Project 4">
+                        <div class="portfolio-content">
+                            <span class="portfolio-tag">Sertifikasi</span>
+                            <h3>Menjahit</h3>
+                            <p>Mengikuti Beberapa Sertifikasi Untuk Mengasah Keterampilan</p>
+                            <a href="https://drive.google.com/file/d/1xu-O8loZ6phlpEO-s2iGlzU2b2njB79J/view?usp=sharing" class="portfolio-link">View Project</a>
+                        </div>
+                    </div>
+                    <div class="portfolio-item">
+                        <img src="Kilasbalik.png" alt="Project 4">
+                        <div class="portfolio-content">
+                            <span class="portfolio-tag">Videografi</span>
+                            <h3>Kilas balik</h3>
+                            <p>Short description of the project goes here...</p>
+                            <a href="https://drive.google.com/file/d/1xu-O8loZ6phlpEO-s2iGlzU2b2njB79J/view?usp=sharing" class="portfolio-link">View Project</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section id="contact" class="contact-section">
+                <h2>CONTACT <span style="color: black;">ME</span></h2>
+                <div class="contact-cards">
+                    <div class="contact-card">
+                        <i class="fas fa-envelope"></i>
+                        <h3>My Email</h3>
+                        <p>nerilapermata08@gmail.com</p>
+                    </div>
+                    <div class="contact-card">
+                        <i class="fas fa-phone"></i>
+                        <h3>My Number</h3>
+                        <p>+6231044126</p>
+                    </div>
+                    <div class="contact-card">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <h3>My Address</h3>
+                        <p>Desa Sembulung, Kecamatan Cluring, Banyuwangi, Jawa Timur, Indonesia</p>
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <form action="#" method="POST">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" required>
+                        
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                        
+                        <label for="number">Number</label>
+                        <input type="tel" id="number" name="number" required>
+                        
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" rows="5" required></textarea>
+                        
+                        <button type="submit">Send Message</button>
+                    </form>
+                </div>
+            
+                <div class="map">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d893.7884728583853!2d114.20035520721547!3d-8.447542847531347!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zOMKwMjYnNTEuNSJTIDExNMKwMTInMDAuOSJF!5e0!3m2!1sid!2sid!4v1729586791157!5m2!1sid!2sid" 
+                            width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </section>                                                     
+        </main>
+    </div>
+</body>
+</html>
